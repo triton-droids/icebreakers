@@ -68,7 +68,12 @@ void setup() {
   delay(1000);  // Wait 1 second before starting
 }
 
-// Helper function to update a single servo
+/**
+ * Update a single servo's position in the continuous loop
+ * @param servo Reference to the Servo object to update
+ * @param pos Reference to current position (modified by this function)
+ * @param dir Reference to current direction (modified by this function)
+ */
 void updateServo(Servo &servo, int &pos, int &dir) {
   pos += dir * ANGLE_STEP;
   if (pos >= MAX_ANGLE) {
