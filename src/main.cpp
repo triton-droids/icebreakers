@@ -68,50 +68,25 @@ void setup() {
   delay(1000);  // Wait 1 second before starting
 }
 
+// Helper function to update a single servo
+void updateServo(Servo &servo, int &pos, int &dir) {
+  pos += dir * ANGLE_STEP;
+  if (pos >= MAX_ANGLE) {
+    pos = MAX_ANGLE;
+    dir = -1;
+  } else if (pos <= MIN_ANGLE) {
+    pos = MIN_ANGLE;
+    dir = 1;
+  }
+  servo.write(pos);
+}
+
 void loop() {
-  // Update servo 1
-  pos1 += dir1 * ANGLE_STEP;
-  if (pos1 >= MAX_ANGLE) {
-    pos1 = MAX_ANGLE;
-    dir1 = -1;
-  } else if (pos1 <= MIN_ANGLE) {
-    pos1 = MIN_ANGLE;
-    dir1 = 1;
-  }
-  servo1.write(pos1);
-  
-  // Update servo 2 (slightly offset for visual effect)
-  pos2 += dir2 * ANGLE_STEP;
-  if (pos2 >= MAX_ANGLE) {
-    pos2 = MAX_ANGLE;
-    dir2 = -1;
-  } else if (pos2 <= MIN_ANGLE) {
-    pos2 = MIN_ANGLE;
-    dir2 = 1;
-  }
-  servo2.write(pos2);
-  
-  // Update servo 3
-  pos3 += dir3 * ANGLE_STEP;
-  if (pos3 >= MAX_ANGLE) {
-    pos3 = MAX_ANGLE;
-    dir3 = -1;
-  } else if (pos3 <= MIN_ANGLE) {
-    pos3 = MIN_ANGLE;
-    dir3 = 1;
-  }
-  servo3.write(pos3);
-  
-  // Update servo 4
-  pos4 += dir4 * ANGLE_STEP;
-  if (pos4 >= MAX_ANGLE) {
-    pos4 = MAX_ANGLE;
-    dir4 = -1;
-  } else if (pos4 <= MIN_ANGLE) {
-    pos4 = MIN_ANGLE;
-    dir4 = 1;
-  }
-  servo4.write(pos4);
+  // Update all servos
+  updateServo(servo1, pos1, dir1);
+  updateServo(servo2, pos2, dir2);
+  updateServo(servo3, pos3, dir3);
+  updateServo(servo4, pos4, dir4);
   
   // Small delay between updates
   delay(STEP_DELAY);
