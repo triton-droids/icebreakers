@@ -1,0 +1,16 @@
+# PlatformIO files
+.pio/
+.vscode/
+.pioenvs/
+.piolibdeps/
+
+# Build artifacts
+*.pyc
+__pycache__/
+.cache/
+
+# IDE files
+.DS_Store
+*.swp
+*.swo
+*~
